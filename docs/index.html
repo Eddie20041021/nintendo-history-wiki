@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>任天堂的 137 年｜教學簡報</title>
+<style>
+:root {
+  --bg: #f4f2ee; --paper: #ffffff; --ink: #1d1d1f; --muted: #6b6b70; --line: #e4e1db;
+  --accent: #d6342c; --accent-soft: #fbe9e7; --good: #2e7d4f; --bad: #b3261e;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font); }
+body { display: flex; flex-direction: column; overflow: hidden; }
+.stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.slide { display: none; width: min(1040px, 100%); aspect-ratio: 16 / 9; max-height: calc(100vh - 80px);
+  background: var(--paper); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  padding: clamp(20px, 4.5vw, 56px) clamp(22px, 5vw, 64px); position: relative; overflow: hidden; flex-direction: column; }
+.slide.active { display: flex; }
+.era { font-size: clamp(13px, 1.6vw, 16px); color: var(--accent); font-weight: 700; letter-spacing: .08em; margin: 0 0 6px; }
+h1 { font-size: clamp(30px, 5.4vw, 60px); margin: 0 0 10px; line-height: 1.15; }
+h2 { font-size: clamp(24px, 3.9vw, 46px); margin: 0 0 22px; line-height: 1.25; }
+h3 { font-size: clamp(16px, 2.2vw, 24px); margin: 22px 0 8px; color: var(--muted); }
+.sub { font-size: clamp(16px, 2.3vw, 26px); color: var(--muted); margin: 0 0 8px; }
+ul, ol { margin: 0; padding-left: 1.2em; font-size: clamp(16px, 2.45vw, 28px); line-height: 1.6; }
+li { margin: 6px 0; }
+.y { display: inline-block; min-width: 3.4em; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.n { font-weight: 800; font-variant-numeric: tabular-nums; }
+dfn { font-style: normal; font-weight: 700; border-bottom: 2px solid var(--accent); }
+dfn + .def { color: var(--muted); font-size: .9em; }
+.tag-good { color: var(--good); font-weight: 700; } .tag-bad { color: var(--bad); font-weight: 700; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 4px; }
+.box { border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; font-size: clamp(15px, 2.2vw, 25px); line-height: 1.55; }
+.box b { display: block; margin-bottom: 4px; }
+.box.myth { background: var(--accent-soft); border-color: transparent; }
+.bars { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: clamp(11px, 1.6vw, 18px); }
+.bars li { display: grid; grid-template-columns: 9.5em 1fr 4.2em; align-items: center; gap: 10px; margin: 0; line-height: 1.2; }
+.bars .bar { height: 16px; border-radius: 4px; background: #c9c6bf; }
+.bars .top .bar { background: var(--accent); } .bars .low .bar { background: #8f8c86; }
+.bars .v { text-align: right; font-variant-numeric: tabular-nums; }
+.note { font-size: clamp(11px, 1.3vw, 13px); color: var(--muted); margin-top: 8px; }
+details { margin: 8px 0; font-size: clamp(15px, 2.2vw, 25px); }
+summary { cursor: pointer; }
+details p { margin: 4px 0 0 1.2em; color: var(--accent); font-weight: 700; }
+.timeline { display: flex; flex-wrap: wrap; gap: 8px 6px; align-items: center; font-size: clamp(14px, 2.1vw, 24px); margin: 0 0 6px; }
+.timeline span { background: var(--bg); border-radius: 999px; padding: 4px 12px; }
+.timeline i { color: var(--muted); font-style: normal; }
+footer.src { position: absolute; left: clamp(22px, 5vw, 64px); right: clamp(22px, 5vw, 64px); bottom: 14px;
+  font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+footer.src a { color: var(--muted); margin-right: 10px; }
+.bottom { height: 56px; display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--muted); font-size: 14px; }
+.bottom button { font: inherit; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 16px; cursor: pointer; color: var(--ink); }
+.progress { position: fixed; left: 0; top: 0; height: 3px; background: var(--accent); transition: width .2s; }
+@media (max-width: 640px) {
+  .slide { aspect-ratio: auto; height: calc(100vh - 88px); }
+  .grid2 { grid-template-columns: 1fr; }
+  .bars li { grid-template-columns: 7em 1fr 3.8em; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="stage">
+
+<section class="slide" data-wiki="eras/1889-1969-cards-and-toys.md eras/2017-now-switch.md">
+  <p class="era">教學簡報</p>
+  <h1>任天堂的 137 年</h1>
+  <p class="sub">從 1889 年京都的一家紙牌店，到 2025 年的 Switch 2</p>
+  <h3>學習目標</h3>
+  <ol>
+    <li>說出任天堂從紙牌公司變成遊戲公司的幾個轉折</li>
+    <li>認得幾台關鍵主機，以及它們賣得好不好</li>
+    <li>分辨「流傳的說法」和「有證據的事實」</li>
+  </ol>
+</section>
+
+<section class="slide" data-wiki="eras/1889-1969-cards-and-toys.md">
+  <p class="era">1889–1963</p>
+  <h2>一開始，是一家紙牌店</h2>
+  <ul>
+    <li><span class="y">1889</span>山內房治郎在京都開始做<dfn>花札</dfn><span class="def">（日本傳統紙牌遊戲）</span></li>
+    <li><span class="y">1947</span>成立現在這家公司的前身「丸福」</li>
+    <li><span class="y">1953</span>日本第一個量產塑膠撲克牌的公司</li>
+    <li><span class="y">1963</span>才正式改名為「任天堂」</li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="eras/1889-1969-cards-and-toys.md">
+  <p class="era">1960 年代</p>
+  <h2>轉型屢屢失敗，最後轉向玩具</h2>
+  <ul>
+    <li><span class="y">1964</span>紙牌市場飽和，股價大跌</li>
+    <li>試過計程車公司、即食飯、吸塵器，<span class="tag-bad">都失敗了</span></li>
+    <li><span class="y">1965</span>工程師橫井軍平進公司，原本負責修理紙牌生產機器</li>
+    <li><span class="y">1966</span>他業餘做的伸縮手臂，做成玩具 Ultra Hand，<span class="tag-good">大賣</span></li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="eras/1970-1982-early-video-games.md">
+  <p class="era">1977–1981</p>
+  <h2>走進電子遊戲</h2>
+  <ul>
+    <li><span class="y">1977</span>第一款家用電視遊戲機 Color TV-Game</li>
+    <li><span class="y">1978</span>開始做<dfn>街機</dfn><span class="def">（遊樂場裡投幣玩的大型遊戲機）</span></li>
+    <li><span class="y">1980</span><dfn>掌機</dfn><span class="def">（拿在手上玩的遊戲機）</span>Game &amp; Watch，靈感據說來自新幹線上無聊按計算機的上班族</li>
+    <li><span class="y">1981</span>宮本茂設計《大金剛》，瑪利歐從這裡誕生</li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="eras/1983-1990-famicom.md concepts/crash-of-1983.md">
+  <p class="era">1983–1986</p>
+  <h2>紅白機，救回了美國遊戲市場</h2>
+  <ul>
+    <li><span class="y">1983</span>推出家用主機 Family Computer，台灣俗稱<dfn>紅白機</dfn></li>
+    <li>同一時期，美國遊戲市場因為爛遊戲太多而崩盤，產值跌了將近 <span class="n">97%</span></li>
+    <li><span class="y">1986</span>美國版 NES 全面上市，用<dfn>品質認證</dfn><span class="def">（任天堂核准的遊戲才能印的標章）</span>和鎖晶片，管住<dfn>第三方</dfn><span class="def">（不是任天堂自己做遊戲的廠商）</span></li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="eras/1983-1990-famicom.md eras/1991-2001-rivals.md concepts/lateral-thinking.md">
+  <p class="era">1989–2001</p>
+  <h2>Game Boy 大賣，對手也出現了</h2>
+  <ul>
+    <li><span class="y">1989</span>Game Boy，累計 <span class="n">118.69</span> 百萬台</li>
+    <li>設計者橫井軍平的想法：<dfn>枯れた技術の水平思考</dfn><span class="def">（用成熟便宜的技術做新玩法）</span></li>
+    <li><span class="y">1991</span>和 Sony 合作破局，Sony 自己在 1994 年推出 PlayStation</li>
+    <li><span class="y">1995</span>Virtual Boy、<span class="y">2001</span>GameCube，<span class="tag-bad">都賣得不好</span></li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="eras/2002-2016-iwata.md">
+  <p class="era">2002–2016</p>
+  <h2>岩田聰時代：DS、Wii，然後是 Wii U</h2>
+  <ul>
+    <li><span class="y">2002</span>岩田聰接任社長，第一位非山內家族出身的社長</li>
+    <li><span class="y">2004</span>DS，雙螢幕加觸控：<span class="n">154.02</span> 百萬台</li>
+    <li><span class="y">2006</span>Wii，體感控制器：<span class="n">101.63</span> 百萬台</li>
+    <li><span class="y">2012</span>Wii U <span class="tag-bad">銷量不佳</span>：只有 <span class="n">13.56</span> 百萬台</li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="eras/2017-now-switch.md">
+  <p class="era">2017–現在</p>
+  <h2>Switch 時代</h2>
+  <ul>
+    <li><span class="y">2017</span>Switch，家用和攜帶可以切換</li>
+    <li>累計 <span class="n">157.20</span> 百萬台，<span class="tag-good">任天堂史上賣最多的主機</span></li>
+    <li><span class="y">2024</span>任天堂博物館在宇治開幕，一樓又能玩花札</li>
+    <li><span class="y">2025</span>Switch 2，截至 2026 年 9 月底已賣 <span class="n">26.35</span> 百萬台</li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="data/console-sales.md">
+  <p class="era">資料</p>
+  <h2>歷代主機賣了多少（百萬台）</h2>
+  <ul class="bars">
+    <li class="top"><span>Switch</span><span class="bar" style="width:100%"></span><span class="v">157.20</span></li>
+    <li><span>DS</span><span class="bar" style="width:98%"></span><span class="v">154.02</span></li>
+    <li><span>Game Boy</span><span class="bar" style="width:75.5%"></span><span class="v">118.69</span></li>
+    <li><span>Wii</span><span class="bar" style="width:64.7%"></span><span class="v">101.63</span></li>
+    <li><span>Game Boy Advance</span><span class="bar" style="width:51.9%"></span><span class="v">81.51</span></li>
+    <li><span>3DS</span><span class="bar" style="width:48.3%"></span><span class="v">75.94</span></li>
+    <li><span>紅白機／NES</span><span class="bar" style="width:39.4%"></span><span class="v">61.91</span></li>
+    <li><span>超級任天堂</span><span class="bar" style="width:31.2%"></span><span class="v">49.10</span></li>
+    <li><span>Nintendo 64</span><span class="bar" style="width:20.9%"></span><span class="v">32.93</span></li>
+    <li><span>Switch 2</span><span class="bar" style="width:16.8%"></span><span class="v">26.35</span></li>
+    <li><span>GameCube</span><span class="bar" style="width:13.8%"></span><span class="v">21.74</span></li>
+    <li class="low"><span>Wii U</span><span class="bar" style="width:8.6%"></span><span class="v">13.56</span></li>
+  </ul>
+  <p class="note">任天堂官方 IR 全球累計銷量，截至 2026-09-30。Switch 2 仍在販售中。</p>
+</section>
+
+<section class="slide" data-wiki="myths/love-hotel.md">
+  <p class="era">常見誤傳</p>
+  <h2>任天堂開過情趣旅館？</h2>
+  <div class="grid2">
+    <div class="box myth"><b>流傳的說法</b>任天堂在 1960 年代經營過情趣旅館</div>
+    <div class="box"><b>查證結果</b>任天堂的有價證券報告書和當時報紙都找不到證據</div>
+  </div>
+  <ul style="margin-top:16px">
+    <li>有證據的轉型嘗試是：計程車公司、即食飯、吸塵器</li>
+    <li>分辨方法：看說法有沒有附上可以查證的來源，而不是看有多少人在說</li>
+  </ul>
+</section>
+
+<section class="slide" data-wiki="eras/1889-1969-cards-and-toys.md eras/1970-1982-early-video-games.md eras/1983-1990-famicom.md eras/2017-now-switch.md data/console-sales.md myths/love-hotel.md">
+  <p class="era">重點回顧</p>
+  <h2>五個階段</h2>
+  <div class="timeline"><span>1889 紙牌</span><i>→</i><span>1966 玩具</span><i>→</i><span>1977 電子遊戲</span><i>→</i><span>1983 紅白機</span><i>→</i><span>2017 Switch</span></div>
+  <h3>小測驗（點一下看答案）</h3>
+  <details><summary>任天堂一開始是賣什麼的？</summary><p>花札（日本傳統紙牌）</p></details>
+  <details><summary>任天堂史上賣最多的主機是哪一台？</summary><p>Switch，157.20 百萬台</p></details>
+  <details><summary>「任天堂開過情趣旅館」是真的嗎？</summary><p>查無證據，不能當成事實</p></details>
+</section>
+
+</main>
+<nav class="bottom">
+  <button id="prev" aria-label="上一張">←</button>
+  <span id="counter"></span>
+  <button id="next" aria-label="下一張">→</button>
+</nav>
+<script>
+(() => {
+  const REPO = "https://github.com/Eddie20041021/nintendo-history-wiki/blob/main/wiki/";
+  const slides = [...document.querySelectorAll(".slide")];
+  // 每張投影片的出處連結，依 data-wiki 自動產生
+  slides.forEach((s) => {
+    const f = document.createElement("footer");
+    f.className = "src";
+    f.innerHTML = "出處（Wiki）：" + s.dataset.wiki.split(" ")
+      .map((p) => `<a href="${REPO}${p}" target="_blank" rel="noopener">${p.replace(/\.md$/, "")}</a>`).join("");
+    s.appendChild(f);
+  });
+  let i = Math.max(0, Math.min(slides.length - 1, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+  const show = (n) => {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle("active", k === i));
+    document.getElementById("counter").textContent = `${i + 1} / ${slides.length}`;
+    document.getElementById("progress").style.width = `${((i + 1) / slides.length) * 100}%`;
+    history.replaceState(null, "", `#${i + 1}`);
+  };
+  document.getElementById("prev").onclick = () => show(i - 1);
+  document.getElementById("next").onclick = () => show(i + 1);
+  document.addEventListener("keydown", (e) => {
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); show(i - 1); }
+  });
+  let x0 = null;
+  document.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  show(i);
+})();
+</script>
+</body>
+</html>
